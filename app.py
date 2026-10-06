@@ -1,3 +1,4 @@
+import os 
 import pandas as pd
 import streamlit as st
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -20,7 +21,8 @@ st.set_page_config(
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv("IMDbRatings_IndianMovies.csv")
+csv_path = os.path.join(os.path.dirname(__file__), "IMDbRatings_IndianMovies.csv")
+df = pd.read_csv(csv_path)
 
     # Remove unnecessary spaces from column names
     df.columns = df.columns.str.strip()
