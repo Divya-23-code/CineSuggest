@@ -21,8 +21,8 @@ st.set_page_config(
 
 @st.cache_data
 def load_data():
-   csv_path = os.path.join(os.path.dirname(__file__), "IMDbRatings_IndianMovies.csv")
-    df = pd.read_csv(csv_path)
+   csv_path =     os.path.join(os.path.dirname(__file__), "IMDbRatings_IndianMovies.csv")
+  df = pd.read_csv(csv_path)
 
     # Remove unnecessary spaces from column names
     df.columns = df.columns.str.strip()
