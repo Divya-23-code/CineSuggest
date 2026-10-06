@@ -68,8 +68,8 @@ tfidf = TfidfVectorizer(
 
 tfidf_matrix = tfidf.fit_transform(df["combined_features"])
 
+
 # Calculate similarity between movies
-similarity_matrix = cosine_similarity(tfidf_matrix)
 
 
 # ---------------------------------------------------
@@ -90,8 +90,13 @@ def recommend_movies(movie_name, number_of_movies=10):
 
     # Get similarity scores
     similarity_scores = list(
-        enumerate(similarity_matrix[movie_index])
+    enumerate(
+        cosine_similarity(
+            tfidf_matrix[movie_index],
+            tfidf_matrix
+        )[0]
     )
+)
 
     # Sort movies according to similarity
     similarity_scores = sorted(
